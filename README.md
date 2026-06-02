@@ -31,7 +31,7 @@ From the menu on the left, navigate to `Developers`, click on `Create a new API 
 
 You can store this key as a secret by running the bash command in your terminal as follows:
 
-```
+```bash
 export BOLNA_API_KEY="your_bolna_api_key_here"
 ```
 
@@ -72,7 +72,7 @@ export SLACK_WEBHOOK_URL="https://hooks.slack.com/services/S.../V.../..."
 
 Create a new folder for your project and name it appropriately, such as `bolna-demo`.
 
-```
+```bash
 cd bolna-demo
 git init
 npm install express
@@ -89,7 +89,7 @@ Create a new file in your project directory and name it `server.js`
 
 Edit the file such that the contents of the file are as follows:
 
-```
+```js
 import express from "express";
 
 const app = express();
@@ -190,7 +190,7 @@ Server listening on http://localhost:3000
 
 ### 4.1 Install and run ngrok
 
-```
+```bash
 #macos
 brew install ngrok
 
@@ -209,7 +209,18 @@ ngrok http 3000
 The terminal should display the ngrok URL such as:
 
 ```
-Forwarding   https://colourful-domestic-blob.ngrok-free.dev -> http://localhost:3000
+ngrok                                                                             (Ctrl+C to quit)
+                                                                                                  
+Request early access to new features: https://dashboard.ngrok.com/early-access                    
+                                                                                                  
+Session Status                online                                                              
+Account                       abc (Plan: Free)                                           
+Update                        update available (version 3.39.6, Ctrl-U to update)                 
+Version                       3.39.5                                                              
+Region                        xyz                                                          
+Latency                       36ms                                                                
+Web Interface                 http://XXX.0.0.X:X0X0     
+Forwarding                    https://colourful-domestic-blob.ngrok-free.dev -> http://localhost:3000
 ```
 
 ### 4.2 Add the Webhook URL in agent analytics
@@ -228,7 +239,7 @@ Awesome. We're pretty close to the finish line.
 
 Let's test out our integration by triggering a Bolna API call. Run the following in a new terminal:
 
-```
+```bash
 curl -X POST https://api.bolna.ai/call \
   -H "Authorization: Bearer $BOLNA_API_KEY" \
   -H "Content-Type: application/json" \
@@ -247,7 +258,7 @@ Note: You will need to first verify the phone number on the Bolna dashboard.
 
 Once you run the above curl test, you should see a similar response on your terminal as follows:
 
-```
+```json
 {"status":"queued","message":"done","execution_id":"0ca2767b-e8d0-4c08-a662-64093e4fea80","run_id":"0ca2767b-e8d0-4c08-a662-64093e4fea80"}%
 ```
 Awesome! Now keep an eye on your phone for the test call. Once you receive the call, interact with the agent and hang up after a few minutes.
